@@ -1,0 +1,23 @@
+<.header>
+  Marriage license <%= @marriage_license.id %>
+  <:subtitle>This is a marriage_license record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/marriage_licenses/#{@marriage_license}/edit"}>
+      <.button>Edit marriage_license</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Applicant name"><%= @marriage_license.applicant_name %></:item>
+  <:item title="Co applicant name"><%= @marriage_license.co_applicant_name %></:item>
+  <:item title="Date of marriage"><%= @marriage_license.date_of_marriage %></:item>
+  <:item title="Place of marriage"><%= @marriage_license.place_of_marriage %></:item>
+  <:item title="Officiant name"><%= @marriage_license.officiant_name %></:item>
+  <:item title="License number"><%= @marriage_license.license_number %></:item>
+  <:item title="Witness names"><%= @marriage_license.witness_names %></:item>
+  <:item title="License issue date"><%= @marriage_license.license_issue_date %></:item>
+  <:item title="Status"><%= @marriage_license.status %></:item>
+</.list>
+
+<.back navigate={~p"/marriage_licenses"}>Back to marriage_licenses</.back>

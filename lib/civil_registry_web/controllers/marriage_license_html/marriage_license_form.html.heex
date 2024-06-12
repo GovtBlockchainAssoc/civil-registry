@@ -1,0 +1,17 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:applicant_name]} type="text" label="Applicant name" />
+  <.input field={f[:co_applicant_name]} type="text" label="Co applicant name" />
+  <.input field={f[:date_of_marriage]} type="date" label="Date of marriage" />
+  <.input field={f[:place_of_marriage]} type="text" label="Place of marriage" />
+  <.input field={f[:officiant_name]} type="text" label="Officiant name" />
+  <.input field={f[:license_number]} type="text" label="License number" />
+  <.input field={f[:witness_names]} type="text" label="Witness names" />
+  <.input field={f[:license_issue_date]} type="date" label="License issue date" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <:actions>
+    <.button>Save Marriage license</.button>
+  </:actions>
+</.simple_form>

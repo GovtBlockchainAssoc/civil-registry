@@ -16,6 +16,7 @@ defmodule CivilRegistryWeb.Router do
 
   scope "/", CivilRegistryWeb do
     pipe_through :browser
+    resources "/marriage_licenses", MarriageLicenseController
 
     get "/", PageController, :home
   end

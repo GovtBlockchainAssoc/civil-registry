@@ -1,0 +1,31 @@
+<.header>
+  Listing Marriage licenses
+  <:actions>
+    <.link href={~p"/marriage_licenses/new"}>
+      <.button>New Marriage license</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="marriage_licenses" rows={@marriage_licenses} row_click={&JS.navigate(~p"/marriage_licenses/#{&1}")}>
+  <:col :let={marriage_license} label="Applicant name"><%= marriage_license.applicant_name %></:col>
+  <:col :let={marriage_license} label="Co applicant name"><%= marriage_license.co_applicant_name %></:col>
+  <:col :let={marriage_license} label="Date of marriage"><%= marriage_license.date_of_marriage %></:col>
+  <:col :let={marriage_license} label="Place of marriage"><%= marriage_license.place_of_marriage %></:col>
+  <:col :let={marriage_license} label="Officiant name"><%= marriage_license.officiant_name %></:col>
+  <:col :let={marriage_license} label="License number"><%= marriage_license.license_number %></:col>
+  <:col :let={marriage_license} label="Witness names"><%= marriage_license.witness_names %></:col>
+  <:col :let={marriage_license} label="License issue date"><%= marriage_license.license_issue_date %></:col>
+  <:col :let={marriage_license} label="Status"><%= marriage_license.status %></:col>
+  <:action :let={marriage_license}>
+    <div class="sr-only">
+      <.link navigate={~p"/marriage_licenses/#{marriage_license}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/marriage_licenses/#{marriage_license}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={marriage_license}>
+    <.link href={~p"/marriage_licenses/#{marriage_license}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>
