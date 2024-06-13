@@ -2,6 +2,19 @@ defmodule CivilRegistry.Marriage.MarriageLicense do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [
+    :status,
+    :applicant_name,
+    :co_applicant_name,
+    :date_of_marriage,
+    :place_of_marriage,
+    :officiant_name,
+    :license_number,
+    :witness_names,
+    :license_issue_date,
+  ]}
+
+
   schema "marriage_licenses" do
     field :status, :string
     field :applicant_name, :string

@@ -1,3 +1,5 @@
+require Jason
+
 defmodule CivilRegistryWeb.MarriageLicenseController do
   use CivilRegistryWeb, :controller
 
@@ -7,6 +9,14 @@ defmodule CivilRegistryWeb.MarriageLicenseController do
   def index(conn, _params) do
     marriage_licenses = Marriage.list_marriage_licenses()
     render(conn, :index, marriage_licenses: marriage_licenses)
+  end
+
+  def generate_hash(string) do
+    # Generate SHA-256 hash
+    hash = :crypto.hash(:sha256, string)
+    |> Base.encode16(case: :lower)
+
+    hash
   end
 
   def new(conn, _params) do
@@ -28,7 +38,9 @@ defmodule CivilRegistryWeb.MarriageLicenseController do
 
   def show(conn, %{"id" => id}) do
     marriage_license = Marriage.get_marriage_license!(id)
-    render(conn, :show, marriage_license: marriage_license)
+    json = Jason.encode!(marriage_license) |> Jason.Formatter.pretty_print
+    hash = generate_hash(json)
+    render(conn, :show, marriage_license: marriage_license, json: json, hash: hash)
   end
 
   def edit(conn, %{"id" => id}) do
